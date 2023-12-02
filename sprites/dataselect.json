@@ -1,3 +1,6 @@
 {
-	"dataSel_slot217":  { "File": "dataSel_slot217.png", "Rect": "0,2,46,55", "Center": "23,55" }
+	"dataSel_slot217":  { "File": "dataSel_slot217.png", "Rect": "0,2,46,55", "Center": "23,55" },
+	"dataSel_savePortrait_slot217":  { "File": "saveportraits.png", "Rect": "0,0,80,56", "Center": "40,120" },
+    	"dataSel_savePortrait_superslot217":  { "File": "saveportraits.png", "Rect": "80,0,80,56", "Center": "40,120" },
+    	"dataSel_savePortrait_clear_slot217":  { "File": "saveportraits.png", "Rect": "160,0,80,56", "Center": "40,120" },
 }
