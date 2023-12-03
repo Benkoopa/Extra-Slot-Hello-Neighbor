@@ -411,7 +411,7 @@ function void ExtraChar.onCollisionWithDynamicObject_char217()
 	if (D1.u8 == 0)
 	{
 		// Collision is an enemy, i.e. is harmful, but can be attacked
-		bool attacking = false
+		bool attacking = true
 		if (char.bonus_effect & char.bonus.INVINCIBLE || char.state == char.state.ROLLING || char.state == char.state.SPINDASH)
 		{
 			attacking = true
