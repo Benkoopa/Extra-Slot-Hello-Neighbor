@@ -1,4 +1,4 @@
 {
 	"hud_bonus_icon_slot16":   { "File": "hud_text_sprites.png", "Rect":  "0,61,12,19" },
-	"continue_icon_slot16":    { "File": "hud_text_sprites.png", "Rect": "0,82,20,24",  "Center": "12,24" }
+	"continue_icon_slot16":    { "File": "hud_text_sprites.png", "Rect": "66,72,24,34",  "Center": "12,24" }
 }
