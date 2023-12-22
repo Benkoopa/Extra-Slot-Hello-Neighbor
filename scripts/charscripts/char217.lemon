@@ -855,3 +855,49 @@ function string ExtraChar.getCharacterName(u8 xtrachar)
         return "The Neighbor"
     return base.ExtraChar.getCharacterName(xtrachar)
 }
+
+// Blue Spheres results screen
+//# address-hook(0x02ec80) end(0x02eca6)
+function void fn02ec80()
+{
+    if (global.xtrachar == 217)
+    {
+        D0 = 0
+        D1 = 0
+        return
+    }
+    base.fn02ec80()
+}
+//# address-hook(0x02dd3e) end(0x02dd92)
+function void LevelResults.UpdateCharacterNameDisplay()
+{
+    if (global.xtrachar == 217)
+    {
+	D0 = 0
+	objA0.position.x.u16 += D0.u16
+	u16[A0 + 0x46] += D0.u16
+	objA0.box_size.x -= D0.u8
+        A1 = 0xffff0000 + u16[A0 + 0x48]
+        D0 = (u16[A1 + 0x2c] != 0) ? 0x0028 : 0
+        objA0.sprite_attributes = D0.u16
+        objA0.update_address = 0x02dd98
+        LevelResults.UpdateStaticTextDisplay()
+        return
+    }
+    base.LevelResults.UpdateCharacterNameDisplay()
+}
+//ess stuff
+function bool ESS_drawChar_Es(s16 px, s16 py, bool no_save, u8 ES_val)
+{
+	if (ES_val == 217)
+	{
+		u16 renderQueue = 0x6000
+		u8 atex
+		{
+			Renderer.drawCustomSprite("ESS_char_Es217", px, py, atex, 0, renderQueue)
+		}
+		return true
+	}
+	
+	return base.ESS_drawChar_Es(px, py, no_save, ES_val)
+}
