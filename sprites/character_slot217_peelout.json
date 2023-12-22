@@ -1,7 +1,7 @@
 {
 	// Sonic super peel-out sprites
-	"slot217_peelout_0": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
-	"slot217_peelout_1": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
-	"slot217_peelout_2": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
-	"slot217_peelout_3": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" }
+	"character_slot217_peelout_0": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
+	"character_slot217_peelout_1": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
+	"character_slot217_peelout_2": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" },
+	"character_slot217_peelout_3": { "File": "character_slot217.bmp", "Rect": "5,1,36,57", "Center": "18,37" }
 }
