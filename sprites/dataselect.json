@@ -1,6 +1,9 @@
 {
-	"dataSel_slot217":  { "File": "dataSel_slot217.png", "Rect": "0,2,46,55", "Center": "23,55" },
+	"dataSel_slot217":  { "File": "dataSel_slot217.png", "Rect": "3,2,39,55", "Center": "18,48" },
+	"ESS_char_Es217":  { "File": "dataSel_slot217.png", "Rect": "0,2,42,57", "Center": "23,53" },
+	"ESS_Life_Es217":  { "File": "dataSel_slot217.png", "Rect": "48,3,16,16", "Center": "8,16" },
+	"ESS_Cont_Es217":  { "File": "dataSel_slot217.png", "Rect": "42,25,23,34", "Center": "11,28" },
 	"dataSel_savePortrait_slot217":  { "File": "saveportraits.png", "Rect": "0,0,80,56", "Center": "40,120" },
-    	"dataSel_savePortrait_superslot217":  { "File": "saveportraits.png", "Rect": "80,0,80,56", "Center": "40,120" },
-    	"dataSel_savePortrait_clear_slot217":  { "File": "saveportraits.png", "Rect": "160,0,80,56", "Center": "40,120" },
+	"dataSel_savePortrait_superslot217":  { "File": "saveportraits.png", "Rect": "80,0,80,56", "Center": "40,120" },
+	"dataSel_savePortrait_clear_slot217":  { "File": "saveportraits.png", "Rect": "160,0,80,56", "Center": "40,120" }
 }
