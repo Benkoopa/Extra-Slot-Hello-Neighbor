@@ -909,3 +909,9 @@ function bool ESS_drawChar_Es(s16 px, s16 py, bool no_save, u8 ES_val)
 	
 	return base.ESS_drawChar_Es(px, py, no_save, ES_val)
 }
+function s32 ESS_saveBoxGetColor_Es(u8 ES_val)
+{
+	if (ES_val == 217)
+		return 0xc73514
+	return base.ESS_saveBoxGetColor_Es(ES_val)
+}
