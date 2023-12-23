@@ -1,3 +1,4 @@
 {
-    "helloneighbor": { "File": "basementthatyoucannotmiss.ogg", "Type": "Music", "Name": "Basememt That You Cannot Miss"}
+	"helloneighbor": { "File": "basementthatyoucannotmiss.ogg", "Type": "Music", "Name": "Basememt That You Cannot Miss"},
+	"HeyNeighbor": { "File": "Hello_Super_Neighbor.ogg", "Type": "Music","LoopStart": "034023", "Name": "Say hello to your fellow neighbor"}
 }
