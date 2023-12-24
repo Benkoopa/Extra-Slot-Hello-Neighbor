@@ -7,5 +7,22 @@
 		"URL": "https://sonic3air.org",
 		"ModVersion": "1.0.0.0",
 		"GameVersion": "20.04.26.0"
+	},
+	"Settings":
+	{
+	    "NeighborExtraSlotForRealz":
+	    [
+	        {
+	            "InternalName": "NEIGHBOROLDPHYSICS",
+            	"DisplayName": "Hard Mode",
+            	"Variable": "NeighborChallenge",
+            	"DefaultValue": "0",
+            	"Options": 
+		        {
+            		"0x00": "Off",
+            		"0x01": "On",
+                        }
+	        }
+	    ]
 	}
 }
