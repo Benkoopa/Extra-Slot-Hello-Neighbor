@@ -1,5 +1,7 @@
 function bool ExtraChar.checkStartJump_char217()
 {
+if !player1.control_override
+{
 	u8 input_pressed = (char.character == CHARACTER_TAILS) ? control.tails.pressed : control.player1.pressed
 	if ((input_pressed & CONTROL_ABC) == 0)
 		return false
@@ -85,89 +87,30 @@ function bool ExtraChar.checkStartJump_char217()
 	}
 	return true
 }
-
-function void setSpeedCapProperties(u32 address, bool isSuperActive)
-{
-if (global.xtrachar == 217)
-{
-	// Set new max speed cap etc.:
-	//  - u16[address]     = maximum speed			-> e.g. global.move.speedcap
-	//  - u16[address + 2] = maximum acceleration	-> e.g. global.move.acceleration
-	//  - u16[address + 4] = maximum deceleration	-> e.g. global.move.deceleration
-
-	if (char.flags & char.flag.UNDERWATER)
-	{
-		// In water
-	#if STANDALONE
-		if (char.bonus_effect & char.bonus.SPEED_UP)
-		{
-			u16[address] = max(u16[address], 0x600)
-			u16[address + 2] = max(u16[address + 2], 0x600)
-			u16[address + 4] = max(u16[address + 4], 0x600)
-		}
-		else
-	#endif
-		if (isSuperActive)
-		{
-			if (char.character == CHARACTER_SONIC)
-			{
-				u16[address] = 0x500
-				u16[address + 2] = 0x500
-				u16[address + 4] = 0x500
-			}
-			else
-			{
-				u16[address] = 0x400
-				u16[address + 2] = 0x400
-				u16[address + 4] = 0x400
-			}
-		}
-		else
-		{
-			u16[address] = 0x300
-			u16[address + 2] = 0x300
-			u16[address + 4] = 0x300
-		}
-	}
-	else
-	{
-		// Out of water
-	#if STANDALONE
-		if (char.bonus_effect & char.bonus.SPEED_UP)
-		{
-			u16[address] = max(u16[address], 0xc00)
-			u16[address + 2] = max(u16[address + 2], 0xc00)
-			u16[address + 4] = max(u16[address + 4], 0xc00)
-		}
-		else
-	#endif
-		if (isSuperActive)
-		{
-			if (char.character == CHARACTER_SONIC)
-			{
-				u16[address] = 0xa00
-				u16[address + 2] = 0xa00
-				u16[address + 4] = 0xa00
-			#if STANDALONE
-				// Use an acceleration value that makes Super Sonic a bit more controllable
-				u16[address + 2] = 0xa0
-			#endif
-			}
-			else
-			{
-				u16[address] = 0x800
-				u16[address + 2] = 0x800
-				u16[address + 4] = 0x800
-			}
-		}
-		else
-		{
-			u16[address] = 0x600
-			u16[address + 2] = 0x600
-			u16[address + 4] = 0x600
-		}
-	}
+return base.ExtraChar.checkStartJump_char217()
 }
-else
-    base.setSpeedCapProperties(address, isSuperActive)
+
+//# address-hook(0x011da6) end(0x011dec)
+function void Character.UpdateUprightSlopeEffect()
+{
+    if !(global.xtrachar == 217)
+        base.Character.UpdateUprightSlopeEffect()
+}
+
+//# address-hook(0x011dee) end(0x011e28)
+function void Character.UpdateRollingSlopeEffect()
+{
+    if !(global.xtrachar == 217)
+        base.Character.UpdateRollingSlopeEffect()
+}
+
+//# address-hook(0x010bba) end(0x010c8e)
+function void Character.UpdateNormalState.Sonic()
+{
+    if (global.xtrachar == 217)
+    {
+        if (abs(char.groundspeed) >= 0x0600)
+            char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0800 : 0x0800
+    }
+base.Character.UpdateNormalState.Sonic()
 }
