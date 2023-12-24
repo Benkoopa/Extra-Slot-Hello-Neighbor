@@ -242,25 +242,13 @@ function void ExtraChar.drawCharacterSprite_char217()
 			else
 				oldRotationPlayer2 = angle
 		}
-
-		if (key == 0 && animationSpriteEx >= 0x100)
-		{
-			// Special handling for Drop Dash & Super Peel-Out
-			if (animationSpriteEx >= CHAR_ANIMSPRITE_SONIC_PEELOUT)
-			{
-				key = stringformat("character_slot%d_peelout_%d", global.xtrachar, animationSpriteEx - CHAR_ANIMSPRITE_SONIC_PEELOUT)
-			}
-			else
-			{
-				key = stringformat("character_slot%d_dropdash_%d", global.xtrachar, animationSpriteEx - CHAR_ANIMSPRITE_SONIC_DROPDASH)
-			}
 		}
 		if (isPlayer1)
 			timeattack.animSpriteEx = animationSpriteEx
 
 		if (key == 0)
 		{
-			key = stringformat("%s_0x%02x", getCharacterSpriteKey(character), animationSprite)
+			key = stringformat("character_slot217_0x%02x", animationSprite)
 
 			if (!Renderer.hasCustomSprite(key))
 			{
