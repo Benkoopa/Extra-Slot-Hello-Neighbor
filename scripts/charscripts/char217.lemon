@@ -242,7 +242,6 @@ function void ExtraChar.drawCharacterSprite_char217()
 			else
 				oldRotationPlayer2 = angle
 		}
-		}
 		if (isPlayer1)
 			timeattack.animSpriteEx = animationSpriteEx
 
