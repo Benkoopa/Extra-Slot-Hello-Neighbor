@@ -934,3 +934,11 @@ function void LevelResults.UpdateCharacterNameDisplay()
     }
     base.LevelResults.UpdateCharacterNameDisplay()
 }
+
+//ICZ Snowboard removal thing
+//# address-hook(0x0396e4) end(0x03977a)
+function void fn0396e4()
+{
+    if !(global.xtrachar == 217)
+        base.fn0396e4()
+}
