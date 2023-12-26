@@ -14,7 +14,7 @@
 	    [
 	        {
 	            "InternalName": "NEIGHBOROLDPHYSICS",
-            	"DisplayName": "Hard Mode",
+            	"DisplayName": "Easy Mode",
             	"Variable": "NeighborChallenge",
             	"DefaultValue": "0",
             	"Options": 
