@@ -3,6 +3,7 @@
 
 #if EXTRA_CHARACTERS_UNLIMITED
 
+global u8 SPBslot217 = 0x05 //Improved Signpost Base support, for custom ES bases
 // Character scripts
 include charscripts/?
 
