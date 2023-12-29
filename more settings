@@ -1,0 +1,53 @@
+{
+	"Metadata":
+	{
+		"Name": "Extra Slot Hello Neighbor",
+		"Author": "Benkoopa",
+		"Description": "this is house of a very special neighbor who has a weird behavior",
+		"URL": "https://sonic3air.org",
+		"ModVersion": "1.0.0.0",
+		"GameVersion": "20.04.26.0"
+	},
+	"Settings":
+	{
+		"NeighborExtraSlotForRealz":
+		[
+			{
+				"InternalName": "NEIGHBOROLDPHYSICS",
+				"DisplayName": "Easy Mode",
+				"Variable": "NeighborChallenge",
+				"DefaultValue": "0",
+				"Options": 
+				{
+					"0": "Off",
+					"1": "On"
+				}
+			},
+			{
+				"InternalName": "Shirtpal",
+				"DisplayName": "Shirtcolor",
+				"Variable": "shirtpal",
+				"DefaultValue": "0",
+				"Options": 
+				{
+					"0": "Sonic 3 (default)",
+					"1": "Sonic 1",
+					"2": "CD Special Stage",
+					"3": "Disk",
+					"4":"Blurple"
+				}
+			},
+			{
+				"InternalName": "'YOURLAME'",
+				"DisplayName": "music",
+				"Variable": "sounds",
+				"DefaultValue": "0",
+				"Options": 
+				{
+					"0": "On",
+					"1": "Off"
+				}
+			}
+		]
+	}
+}
