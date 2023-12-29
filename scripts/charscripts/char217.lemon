@@ -835,14 +835,28 @@ function bool ExtraChar.checkStartJump_char217()
 	}
 	return true
 }
+global u8 shirtpal
+function string getExtraCharacterPaletteKey(u8 xtrachar)
+{
+    if (global.xtrachar == 217)
+        return stringformat("shirtpal_%d", shirtpal)
+    
+    return base.getExtraCharacterPaletteKey(xtrachar)
+}
 function string getCharacterBluespherePaletteKey(u8 character)
 {
     // Special handling for active extra character
     if (character == CHARACTER_SONIC && global.xtrachar == 217)
-        return "character_palette_slot217"
+        return "shirtpal_%d"
  
     // Return the base function
     return base.getCharacterBluespherePaletteKey(character)
+}
+function string ExtraChar.getCharacterName(u8 xtrachar)
+{
+    if (xtrachar == 217)
+        return "The Neighbor"
+    return base.ExtraChar.getCharacterName(xtrachar)
 }
 function string ExtraChar.getCharacterName(u8 xtrachar)
 {
