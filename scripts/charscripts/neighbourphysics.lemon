@@ -109,99 +109,98 @@ function void Character.UpdateRollingSlopeEffect()
 //# address-hook(0x010bba) end(0x010c8e)
 function void Character.UpdateNormalState.Sonic()
 {
-    if (global.xtrachar == 217) && NeighborChallenge
-    {
-        if (abs(char.groundspeed) >= 0x0600) && !(abs(char.groundspeed) >= 0x0800 || char.state == char.state.BRAKING)
-            char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0800 : 0x0800
-    }
-
-setSpeedCapProperties(A4, false)
-
-base.Character.UpdateNormalState.Sonic()
-}
-
-function void setSpeedCapProperties(u32 address, bool isSuperActive)
-{
-if (global.xtrachar == 217) && !NeighborChallenge && !((char.flags & char.flag.ROLLING || player1.control_override) && !char.double_jump_state)
-{
-	// Set new max speed cap etc.:
-	//  - u16[address]     = maximum speed			-> e.g. global.move.speedcap
-	//  - u16[address + 2] = maximum acceleration	-> e.g. global.move.acceleration
-	//  - u16[address + 4] = maximum deceleration	-> e.g. global.move.deceleration
-
-	if (char.flags & char.flag.UNDERWATER)
+	if (XtraChar == 217 && !NeighborChallenge)
 	{
-		// In water
-	#if STANDALONE
-		if (char.bonus_effect & char.bonus.SPEED_UP)
-		{
-			u16[address] = max(u16[address], 0x600)
-			u16[address + 2] = max(u16[address + 2], 0x600)
-			u16[address + 4] = max(u16[address + 4], 0x600)
-		}
-		else
-	#endif
-		if (isSuperActive)
-		{
-			if (char.character == CHARACTER_SONIC)
-			{
-				u16[address] = 0x500
-				u16[address + 2] = 0x500
-				u16[address + 4] = 0x500
-			}
-			else
-			{
-				u16[address] = 0x400
-				u16[address + 2] = 0x400
-				u16[address + 4] = 0x400
-			}
-		}
-		else
-		{
-			u16[address] = 0x300
-			u16[address + 2] = 0x300
-			u16[address + 4] = 0x300
-		}
+        if (abs(char.groundspeed) >= 0x0600)
+            char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0800 : 0x0800
 	}
 	else
+	neighborSpeedCap(A4, false)
+	base.Character.UpdateNormalState.Sonic()
+}
+function void neighborSpeedCap(u32 address, bool isSuperActive)
+{
+
+	if (XtraChar == 217) && NeighborChallenge && !((char.flags & char.flag.ROLLING || player1.control_override) && !char.double_jump_state)
 	{
-		// Out of water
-	#if STANDALONE
-		if (char.bonus_effect & char.bonus.SPEED_UP)
-		{
-			u16[address] = max(u16[address], 0xc00)
-			u16[address + 2] = max(u16[address + 2], 0xc00)
-			u16[address + 4] = max(u16[address + 4], 0xc00)
-		}
-		else
-	#endif
-		if (isSuperActive)
-		{
-			if (char.character == CHARACTER_SONIC)
+			// Set new max speed cap etc.:
+			//  - u16[address]     = maximum speed			-> e.g. global.move.speedcap
+			//  - u16[address + 2] = maximum acceleration	-> e.g. global.move.acceleration
+			//  - u16[address + 4] = maximum deceleration	-> e.g. global.move.deceleration
+
+			if (char.flags & char.flag.UNDERWATER)
 			{
-				u16[address] = 0xa00
-				u16[address + 2] = 0xa00
-				u16[address + 4] = 0xa00
+				// In water
 			#if STANDALONE
-				// Use an acceleration value that makes Super Sonic a bit more controllable
-				u16[address + 2] = 0xa0
+				if (char.bonus_effect & char.bonus.SPEED_UP)
+				{
+					u16[address] = max(u16[address], 0x600)
+					u16[address + 2] = max(u16[address + 2], 0x600)
+					u16[address + 4] = max(u16[address + 4], 0x600)
+				}
+				else
 			#endif
+				if (isSuperActive)
+				{
+					if (XtraChar == 217)
+					{
+						u16[address] = 0x500
+						u16[address + 2] = 0x500
+						u16[address + 4] = 0x500
+					}
+					else
+					{
+						u16[address] = 0x400
+						u16[address + 2] = 0x400
+						u16[address + 4] = 0x400
+					}
+				}
+				else
+				{
+					u16[address] = 0x300
+					u16[address + 2] = 0x300
+					u16[address + 4] = 0x300
+				}
 			}
 			else
 			{
-				u16[address] = 0x800
-				u16[address + 2] = 0x800
-				u16[address + 4] = 0x800
+				// Out of water
+			#if STANDALONE
+				if (char.bonus_effect & char.bonus.SPEED_UP)
+				{
+					u16[address] = max(u16[address], 0xc00)
+					u16[address + 2] = max(u16[address + 2], 0xc00)
+					u16[address + 4] = max(u16[address + 4], 0xc00)
+				}
+				else
+			#endif
+				if (isSuperActive)
+				{
+					if (XtraChar == 217)
+					{
+						u16[address] = 0xa00
+						u16[address + 2] = 0xa00
+						u16[address + 4] = 0xa00
+					#if STANDALONE
+						// Use an acceleration value that makes Super Sonic a bit more controllable
+						u16[address + 2] = 0xa0
+					#endif
+					}
+					else
+					{
+						u16[address] = 0x800
+						u16[address + 2] = 0x800
+						u16[address + 4] = 0x800
+					}
+				}
+				else
+				{
+					u16[address] = 0x600
+					u16[address + 2] = 0x600
+					u16[address + 4] = 0x600
+				}
 			}
 		}
-		else
-		{
-			u16[address] = 0x600
-			u16[address + 2] = 0x600
-			u16[address + 4] = 0x600
-		}
-	}
-}
-else
-    base.setSpeedCapProperties(address, isSuperActive)
+	else
+    base.neighborSpeedCap(address, isSuperActive)
 }
