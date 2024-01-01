@@ -95,33 +95,34 @@ return base.ExtraChar.checkStartJump_char217()
 //# address-hook(0x011da6) end(0x011dec)
 function void Character.UpdateUprightSlopeEffect()
 {
-    if !(global.xtrachar == 217) || !NeighborChallenge
+    if !(global.xtrachar == 217)
         base.Character.UpdateUprightSlopeEffect()
 }
 
 //# address-hook(0x011dee) end(0x011e28)
 function void Character.UpdateRollingSlopeEffect()
 {
-    if !(global.xtrachar == 217) || !NeighborChallenge
+    if !(global.xtrachar == 217)
         base.Character.UpdateRollingSlopeEffect()
 }
 
 //# address-hook(0x010bba) end(0x010c8e)
 function void Character.UpdateNormalState.Sonic()
 {
-	if (XtraChar == 217 && !NeighborChallenge)
+	if global.xtrachar == 217 && NeighborChallenge
 	{
-        if (abs(char.groundspeed) >= 0x0600)
-            char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0800 : 0x0800
+            if (abs(char.groundspeed) >= 0x0600) && !(abs(char.groundspeed) >= 0x0800 || char.state == char.state.BRAKING)
+                char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0600 : 0x0600
 	}
-	else
-	neighborSpeedCap(A4, false)
+	else if global.xtrachar == 217
+	    setSpeedCapProperties(A4, false)
+
 	base.Character.UpdateNormalState.Sonic()
 }
-function void neighborSpeedCap(u32 address, bool isSuperActive)
+function void setSpeedCapProperties(u32 address, bool isSuperActive)
 {
 
-	if (XtraChar == 217) && NeighborChallenge && !((char.flags & char.flag.ROLLING || player1.control_override) && !char.double_jump_state)
+	if (global.xtrachar == 217) && NeighborChallenge && !((char.flags & char.flag.ROLLING || player1.control_override) && !char.double_jump_state)
 	{
 			// Set new max speed cap etc.:
 			//  - u16[address]     = maximum speed			-> e.g. global.move.speedcap
@@ -202,5 +203,5 @@ function void neighborSpeedCap(u32 address, bool isSuperActive)
 			}
 		}
 	else
-    base.neighborSpeedCap(address, isSuperActive)
+    base.setSpeedCapProperties(address, isSuperActive)
 }
