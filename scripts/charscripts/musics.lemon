@@ -10,7 +10,7 @@ function void Standalone.playAudio(u8 sfxId)
             return
         }
     }
-    if (sfxId == MUSIC_SUPER || sfxId == MUSIC_INVINCIBLE) && global.xtrachar == 217)
+    if (sfxId == MUSIC_SUPER || sfxId == MUSIC_INVINCIBLE) && (global.xtrachar == 217)
     {
             Audio.playAudio("HeyNeighbor", AudioContext.CONTEXT_MUSIC)
             return 
