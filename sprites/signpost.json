@@ -1,4 +1,4 @@
 {
     "Signpost_Base_slot217": { "File": "TableBase.bmp", "Center": "20,0" },
-	"signpost_slot217": { "File": "signpost_slot217.bmp", "Rect": "0,0,48,48", "Center": "24,32" }
+	"signpost_slot217": { "File": "neighbor_signpost.bmp", "Rect": "0,0,48,48", "Center": "24,32" }
 }
