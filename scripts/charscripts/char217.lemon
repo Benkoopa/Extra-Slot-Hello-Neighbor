@@ -742,6 +742,15 @@ function string getExtraCharacterPaletteKey(u8 xtrachar)
     
     return base.getExtraCharacterPaletteKey(xtrachar)
 }
+function string getCharacterEndPosePaletteKey(u8 character)
+{
+    if (global.xtrachar != 217)
+    {
+        return base.getCharacterEndPosePaletteKey(character)
+    }
+
+	return stringformat("shirtpal_%d", shirtpal)
+}
 function string getCharacterBluespherePaletteKey(u8 character)
 {
     // Special handling for active extra character
@@ -751,6 +760,34 @@ function string getCharacterBluespherePaletteKey(u8 character)
     // Return the base function
     return base.getCharacterBluespherePaletteKey(character)
 }
+
+function bool Standalone.onWriteToSpriteTable(s16 px, s16 py, u16 renderQueue)
+{
+
+	u8 gameMode = global.game_mode & 0x7f
+	bool prioFlag = (objA0.sprite_attributes & 0x8000) != 0
+	if (gameMode == 0x0c || gameMode == 0x08)
+	u8 atex
+	u64 key
+	u8 flags = ((objA0.render_flags & 0x01) ? SPRITE_FLAG_FLIP_X : 0) | ((objA0.render_flags & 0x02) ? SPRITE_FLAG_FLIP_Y : 0) | ((objA0.sprite_attributes & 0x8000) ? SPRITE_FLAG_PRIO : 0)
+	if (global.xtrachar ==  217)
+	{
+		//ending pose
+		if (objA0.update_address == 0x05e18a)
+		{
+			u8 character = getMainCharacter()
+			atex = 0x40 + character * 0x20
+			key = (outro.ending_type < 0) ? stringformat("endpose_slot217_0x%02x", objA0.animation.sprite) : "endpose_slot217_0x01"
+
+			if (Renderer.hasCustomSprite(key))
+			{
+				Renderer.drawCustomSprite(key, px, py, atex, flags, renderQueue)
+				return true
+			}
+		}
+	}
+	return base.Standalone.onWriteToSpriteTable(px, py, renderQueue)
+}	
 function string ExtraChar.getCharacterName(u8 xtrachar)
 {
     if (xtrachar == 217)
