@@ -109,7 +109,7 @@ function void Character.UpdateRollingSlopeEffect()
 //# address-hook(0x010bba) end(0x010c8e)
 function void Character.UpdateNormalState.Sonic()
 {
-	if global.xtrachar == 217 && NeighborChallenge
+	if (global.xtrachar == 217 && (NeighborChallenge || (super.active == 0xff && !NeighborChallenge)))
 	{
             if (abs(char.groundspeed) >= 0x0600) && !(abs(char.groundspeed) >= 0x0800 || char.state == char.state.BRAKING)
                 char.groundspeed = (char.flags & char.flag.FACING_LEFT) ? -0x0600 : 0x0600
