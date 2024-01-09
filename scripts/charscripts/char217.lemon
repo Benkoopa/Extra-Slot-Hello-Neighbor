@@ -794,12 +794,6 @@ function string ExtraChar.getCharacterName(u8 xtrachar)
         return "The Neighbor"
     return base.ExtraChar.getCharacterName(xtrachar)
 }
-function string ExtraChar.getCharacterName(u8 xtrachar)
-{
-    if (xtrachar == 217)
-        return "The Neighbor"
-    return base.ExtraChar.getCharacterName(xtrachar)
-}
 
 // Blue Spheres results screen
 //# address-hook(0x02ec80) end(0x02eca6)
