@@ -754,9 +754,10 @@ function string getCharacterEndPosePaletteKey(u8 character)
 function string getCharacterBluespherePaletteKey(u8 character)
 {
     // Special handling for active extra character
-    if (character == CHARACTER_SONIC && global.xtrachar == 217)
-        return "shirtpal_%d"
- 
+    if (global.xtrachar == 217)
+	{
+        return stringformat("shirtpal_%d", shirtpal)
+	}
     // Return the base function
     return base.getCharacterBluespherePaletteKey(character)
 }
