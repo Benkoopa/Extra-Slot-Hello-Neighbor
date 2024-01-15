@@ -2,7 +2,15 @@ function void ExtraChar.startup_char217()
 {
 	global.characters = CHARS_SONIC_ALONE
 }
-
+// Sets the availability status of the character for selection in the Competition menu.
+function bool ExtraChar.CompetitionMode.isCharacterAvailable(u8 xtrachar)
+{
+	if (xtrachar == 217)
+		return true
+	
+	// Call the base function
+	return base.ExtraChar.CompetitionMode.isCharacterAvailable(xtrachar)
+}
 //@ Original function taken from sonic3air_dev/scripts/maingame/hud/hud.lemon
 function bool ExtraChar.renderHUD_char217()
 {
