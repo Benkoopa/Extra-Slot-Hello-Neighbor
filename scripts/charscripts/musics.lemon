@@ -1,18 +1,22 @@
 global bool sounds
+global bool sounds
 function void Standalone.playAudio(u8 sfxId)
 {
 	if (!sounds)
 	{
-   	 	if (sfxId != MUSIC_SUPER) && (sfxId <= 0x32 || sfxId == 0xf0 || sfxId == 0x2f || sfxId == MUSIC_CTRL_FADEOUT || sfxId == MUSIC_CTRL_STOP) && !(sfxId == 0x2C || sfxId == 0x32 || sfxId == 0x29 || sfxId == 0x1C)
+		//ending music
+		if (sfxId == 0x26) && (global.xtrachar == 217)
+		{
+			Audio.playAudio("ByeNeighbor", AudioContext.CONTEXT_MUSIC)
+            return 
+		}
+		//main game
+   	 	if (sfxId != MUSIC_SUPER) && (sfxId <= 0x32 || sfxId == 0xf0 || sfxId == 0x2f || sfxId == MUSIC_CTRL_FADEOUT || sfxId == MUSIC_CTRL_STOP) && !(sfxId == 0x2C || sfxId == 0x32 || sfxId == 0x29 || sfxId == 0x1C) && (global.xtrachar == 217)
     	{
-        	if Audio.isPlayingAudio("helloneighbor")
-            	return
-        	else if (u8[0xffffe654] == 217)
-       		{
             	Audio.playAudio("helloneighbor", AudioContext.CONTEXT_MUSIC)
             	return
-        	}
     	}
+		//super
     	if (sfxId == MUSIC_SUPER || sfxId == MUSIC_INVINCIBLE) && (global.xtrachar == 217)
     	{
             Audio.playAudio("HeyNeighbor", AudioContext.CONTEXT_MUSIC)
