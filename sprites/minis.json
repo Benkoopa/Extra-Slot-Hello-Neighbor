@@ -1,0 +1,4 @@
+{
+	"small_neighbor":  { "File": "minis.bmp", "Rect": "0,0,21,34", "Center": "-6,38" },
+	"NMicro":  { "File": "minis.bmp", "Rect": "22,28,4,6", "Center": "-1,5" }
+}
