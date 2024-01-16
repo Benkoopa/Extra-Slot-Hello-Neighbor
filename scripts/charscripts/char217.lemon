@@ -786,7 +786,7 @@ function bool Standalone.onWriteToSpriteTable(s16 px, s16 py, u16 renderQueue)
 		{
 			u8 character = getMainCharacter()
 			atex = 0x40 + character * 0x20
-			key = (outro.ending_type < 0) ? stringformat("endpose_slot217_0x%02x", objA0.animation.sprite) : "endpose_slot217_0x01"
+			key = (outro.ending_type < 0) ? "endpose_slot217_0x01" : "endpose_slot217_0x01"
 
 			if (Renderer.hasCustomSprite(key))
 			{
@@ -794,6 +794,32 @@ function bool Standalone.onWriteToSpriteTable(s16 px, s16 py, u16 renderQueue)
 				return true
 			}
 		}
+		if (objA0.update_address == 0x05ed18) //standing character
+	        {
+	            if (objA0.subtype2c == 0) //standing character
+	            {
+					atex = 0x40 + getMainCharacter() * 0x20
+	                key = "small_neighbor"
+	                Renderer.drawCustomSprite(key, px, py,atex, flags, renderQueue, 0, 255)        
+	                return true
+	            }
+	            return base.Standalone.onWriteToSpriteTable(px, py, renderQueue)
+	        }
+		if (objA0.update_address == 0x05d86a)
+	        {   
+	            //if flying left use the micro character
+	            if (char.render_flags & 0x01)
+	            {
+	                atex = 0x40 + getMainCharacter() * 0x20
+	                key = "NMicro"
+	    
+	                Renderer.drawCustomSprite(key, px, py, atex, flags, renderQueue+1) // Ray on the plane
+	            }
+	            else
+	            { //this would be the small tornado, so render normally.
+	                return false
+	            }        
+	        }
 	}
 	return base.Standalone.onWriteToSpriteTable(px, py, renderQueue)
 }	
