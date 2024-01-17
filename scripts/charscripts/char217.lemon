@@ -11,6 +11,22 @@ function bool ExtraChar.CompetitionMode.isCharacterAvailable(u8 xtrachar)
 	// Call the base function
 	return base.ExtraChar.CompetitionMode.isCharacterAvailable(xtrachar)
 }
+function string RenderExtraCharIcon(u8 xtrachar)
+{
+	if (xtrachar == 217)
+	{
+		return "level_select_S3C_slot217"
+	}
+	return base.RenderExtraCharIcon(xtrachar)
+}
+function string getESCharacterFallSpriteKey(u8 character, u8 extrachar)
+{
+	if (extrachar == 217 && character == CHARACTER_SONIC)
+	{
+		return "character_slot217_0x01"
+	}
+	return base.getESCharacterFallSpriteKey(character, extrachar)
+}
 //@ Original function taken from sonic3air_dev/scripts/maingame/hud/hud.lemon
 function bool ExtraChar.renderHUD_char217()
 {
