@@ -757,7 +757,7 @@ function string getCharacterEndPosePaletteKey(u8 character)
         return base.getCharacterEndPosePaletteKey(character)
     }
 
-	return stringformat("shirtpal_%d", shirtpal)
+	return stringformat("endshirt_pal%d", shirtpal)
 }
 function string getCharacterBluespherePaletteKey(u8 character)
 {
