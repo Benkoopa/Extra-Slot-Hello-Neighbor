@@ -797,6 +797,29 @@ function bool Standalone.onWriteToSpriteTable(s16 px, s16 py, u16 renderQueue)
 	u8 flags = ((objA0.render_flags & 0x01) ? SPRITE_FLAG_FLIP_X : 0) | ((objA0.render_flags & 0x02) ? SPRITE_FLAG_FLIP_Y : 0) | ((objA0.sprite_attributes & 0x8000) ? SPRITE_FLAG_PRIO : 0)
 	if (global.xtrachar ==  217)
 	{
+		if (objA0.update_address == 0x063790 || objA0.update_address == 0x0637ec || objA0.update_address == 0x063846 || objA0.update_address == 0x0638a2)
+		{
+			u8 character = getMainCharacter()
+			atex = 0x40 + character * 0x20
+			key = "character_slot217_0x01"
+
+			if (Renderer.hasCustomSprite(key))
+			{
+				Renderer.drawCustomSprite(key, px, py, atex, flags, renderQueue)
+				return true
+			}
+		}
+		
+		if (objA0.update_address == 0x212264)
+		{
+			key = stringformat("dust_%d", objA0.value2f)
+			if (Renderer.hasCustomSprite(key))
+			{
+				Renderer.drawCustomSprite(key, px, py, 0, flags, renderQueue)
+				return true
+			}
+		}
+		
 		//ending pose
 		if (objA0.update_address == 0x05e18a)
 		{
