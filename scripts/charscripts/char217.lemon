@@ -761,7 +761,7 @@ function void ExtraChar.onThreatCollision_char217()
 global u8 shirtpal
 function string getExtraCharacterPaletteKey(u8 xtrachar)
 {
-    if (global.xtrachar == 217)
+    if (xtrachar == 217)
         return stringformat("shirtpal_%d", shirtpal)
     
     return base.getExtraCharacterPaletteKey(xtrachar)
